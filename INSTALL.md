@@ -5,7 +5,7 @@ apt-get -y install sudo
 sudo apt-get -y install gnupg2
 sudo apt-get -y install curl
 
-curl http://download.tarantool.org/tarantool/1.10/gpgkey | sudo apt-key add -
+* curl http://download.tarantool.org/tarantool/1.10/gpgkey | sudo apt-key add -
 
 * установить утилиту lsb-release, чтобы узнать кодовое имя вашей ОС;
 * также вы можете указать кодовое имя ОС вручную (например, xenial или bionic)

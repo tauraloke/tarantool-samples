@@ -26,12 +26,12 @@ sudo apt-get -y install tarantool
 
 
 
-* Установиить недостающие пакеты:
-sudo apt-get install nginx-core nginx-extra luarocks
+Установить недостающие пакеты:
+* sudo apt-get install nginx-core nginx-extra luarocks
 
 
-* Установить модули lua:
-sudo luarocks install compat53 
+Установить модули lua:
+* sudo luarocks install compat53 
    luafilesystem 
    ansicolors 
    i18n 

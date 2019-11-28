@@ -23,5 +23,5 @@
 * ./tusker migration down - откатиться к предыдущей миграции. Данные могут быть потеряны.
 * ./tusker migration clean - стереть все созданные скрипты миграций.
 
-## /src/reserver.lua
+## ./src/reserver.lua
 В основе сервера лежит https://github.com/tarantool/http - внутрь просто были помещено немного кода, позволяющего загружать файлы.

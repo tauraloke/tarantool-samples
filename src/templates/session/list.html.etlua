@@ -1,0 +1,23 @@
+
+<div><%= i18n('session_msg') %></div>
+
+<table>
+<% for _, row in pairs(sessions) do %>
+<tr>
+    <td title='<%= row.ip %>'><%= city_by_ip(row.ip) %></td>
+    <td><%= row.user_agent %></td>
+    <td><%= require('os').date('%c', row.date_created) %></td>
+    <td><% if row.id==self.user.session.data.id then %><%= i18n('active') %><% end %></td>
+    <td>
+        <form method="post" action='<%- self:url_for("sessions/drop", {}, {s=self.temp_session_hash}) %>'>
+            <input type="hidden" name="sid" value="<%= row.id %>" />
+            <input type="submit" value="<%= i18n('drop') %>" />
+        </form>
+    </td>
+</tr>
+<% end %>
+</table>
+
+<form method="post" action='<%- self:url_for("sessions/drop_all_except_current", nil, {s=self.temp_session_hash}) %>'>
+<input type="submit" value="<%= i18n('remove_all_other_sessions') %>" />
+</form>

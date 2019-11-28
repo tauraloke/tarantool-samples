@@ -1,0 +1,11 @@
+
+
+
+    <form method='post' action='/upload' enctype='multipart/form-data'>
+      <input type='text' name='namaewa'>
+      <textarea name='wakaru'></textarea>
+      <input type='file' name='примус'>
+      <input type='file' name='secundus'>
+      <input type='submit'>
+    </form>
+    

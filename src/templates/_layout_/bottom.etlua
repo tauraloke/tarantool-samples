@@ -1,0 +1,16 @@
+
+  <div id="footer">
+    <%= i18n("choose_language") %>
+  <% for i,v in pairs(i18n.lang_list) do %>
+    <% if i==i18n.get_locale() then %>
+      <b>[</b><%= v %><b>]</b>
+    <% else %>
+      <a href="<%= url_for('site/locale', nil, {s=self.temp_session_hash, lang=i}) %>"><%= v %></a>
+    <% end %>
+  <% end %>
+  
+  </div>
+  
+
+  </body>
+</html>

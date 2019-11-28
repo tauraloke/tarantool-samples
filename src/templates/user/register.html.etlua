@@ -1,0 +1,58 @@
+<% if msg_without_form then %>
+<div><%= msg_without_form %></div>
+<% else %>
+<form method="post" action='<%= self:url_for(self.path) %>'>
+<div>
+    <input type="hidden" name="csrf_token" value="<%= self:session('csrf_token') or '' %>"/>
+    <input type="text"
+           name="login"
+           value='<%= form.data.login or "" %>'
+           placeholder="<%= i18n('models.users.login') %>" />
+    <%= i18n(form.errors.login, form.error_opts.login) or '' %>
+</div>
+
+<div>
+    <input type="text"
+           name="username"
+           value='<%= form.data.username or "" %>'
+           placeholder="<%= i18n('models.users.username') %>" />
+    <%= i18n(form.errors.username, form.error_opts.username) or '' %>
+</div>
+
+<div>
+    <input type="password"
+           name="pwd"
+           placeholder="<%= i18n('models.users.pwd') %>"/>
+    <%= i18n(form.errors.pwd, form.error_opts.pwd) or '' %>
+</div>
+
+<div>
+    <input type="password"
+           name="pwd_again"
+           placeholder="<%= i18n('pwd_again') %>" />
+    <%= i18n(form.errors.pwd_again, form.error_opts.pwd_again) or '' %>
+</div>
+
+<div>
+    <input type="checkbox"
+           name="accept_terms"
+           id="accept_terms"
+           value="yes" />
+    <label for="accept_terms"><%= i18n('accept_terms') %></label>
+    <% if form.errors.accept_terms then %><%= i18n('please_accept_terms') %><% end %>
+</div>
+
+<div>
+    <input type="submit"
+           value="<%= i18n('submit')%>" />
+</div>
+</form>
+
+<% if config.oauth then %>
+  <%= i18n('or_login_via_social') %>
+ <% for provider, option in pairs(config.oauth) do %>
+  <a href='<%= url_for("oauth/connect", {provider=provider}) %>'><%= provider %></a>
+ <% end %>
+<% end %>
+
+<% end %>

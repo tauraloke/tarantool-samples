@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title><%= self.page_title %></title>
+  </head>
+  <body>
+
+  <div id='main_menu'>
+    <a href="<%= self:url_for('site/home') %>"><%= i18n('templates.site.home.page_title') %></a>
+    <% if self.user then %>
+    <% local user_domain = self.user.data.domain_name %>
+    <% if user_domain== nil then user_domain = self.user.data.id end %>
+    <a href="<%= self:url_for('user/profile', {domain=user_domain}) %>"><%= self.user.data.username %></a>
+    <a href="<%= self:url_for('sessions/list') %>"><%= i18n('templates.session.list.page_title') %></a>
+    <a href="<%= self:url_for('oauth/list') %>"><%= i18n('templates.oauth.list.page_title') %></a>
+    <a href="<%= self:url_for('user/logout', {}, {s=self.temp_session_hash}) %>"><%= i18n('templates.user.logout.page_title') %></a>
+    <% else %>
+    <a href="<%= self:url_for('user/register') %>"><%= i18n('templates.user.register.page_title') %></a>
+    <a href="<%= self:url_for('user/login') %>"><%= i18n('templates.user.login.page_title') %></a>
+    <% end %>
+    <a href="<%= self:url_for('site/upload') %>"><%= i18n('templates.site.upload.page_title') %></a>
+  </div>
+<% if self:session('error_msg') then %>
+    <div><%= self:session('error_msg') %></div>
+  <% self:set_session{error_msg=false} %>
+<% end %>
+
+<% if self:session('notice_msg') then %>
+    <div><%= self:session('notice_msg') %></div>
+  <% self:set_session{notice_msg=false} %>
+<% end %>
+
+

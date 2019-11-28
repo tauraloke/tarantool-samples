@@ -1,0 +1,1 @@
+<%= i18n('mail.verify.message', link) %>

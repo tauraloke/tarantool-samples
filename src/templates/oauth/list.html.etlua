@@ -1,0 +1,12 @@
+<% if config.oauth then %>
+    <% for provider, option in pairs(config.oauth) do %>
+      <div>
+      <% if socials[provider] then %>
+        <%= socials[provider].social_id %>  - <%= provider %> - date_created
+      <% else %>
+        <a href='<%= url_for("oauth/connect", {provider=provider}) %>'><%= provider %></a>
+      <% end %>
+      </div>
+    <% end %>
+<% end %>
+

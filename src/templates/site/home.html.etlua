@@ -1,0 +1,22 @@
+
+    <% if users and users[1] then %>
+    <h6>users</h6>
+    <%- self:render({data=users}, 'site/_print_data.etlua') %> 
+    <% end %>
+    
+
+    <% if sessions and sessions[1] then %>
+    <h6>sessions</h6>
+    <%- self:render({data=sessions}, 'site/_print_data.etlua') %> 
+    <% end %>
+    
+
+    <% if osessions and osessions[1] then %>
+    <h6>osessions</h6>
+    <%- self:render({data=osessions}, 'site/_print_data.etlua') %> 
+    <% end %>
+
+    <% if tsessions and tsessions[1] then %>
+    <h6>tsessions</h6>
+    <%- self:render({data=tsessions}, 'site/_print_data.etlua') %>
+    <% end %>

@@ -1,0 +1,13 @@
+<% if msg_without_form then %>
+<div><%= msg_without_form %></div>
+<% else %>
+<form method="post" action="<%= self:url_for( self.path ) %>">
+    <input name="login" type="text" value="<%= login %>" placeholder="<%= i18n('models.users.login') %>" />
+    <input name="pwd" type="password" placeholder="<%= i18n('models.users.pwd') %>" />
+    <input name="csrf_token" type="hidden" value="<%= self:session('csrf_token') or '' %>" />
+    <input name="submit" type="submit" value="<%= i18n('templates.user.login.submit') %>" />
+</form>
+<% if msg_with_form then %>
+<div><%= msg_with_form %></div>
+<% end %>
+<% end %>

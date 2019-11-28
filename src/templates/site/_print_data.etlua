@@ -1,0 +1,27 @@
+
+    <table border="1">
+        <tr>
+        <% for i,_ in pairs(data[1]) do %>
+          <th><%= i %></th>
+        <% end %>
+        </tr>
+        <% for _, u in pairs(data) do %>
+          <tr>
+            <% for field, v in pairs(u) do %>
+              <td>
+                <% if v == nil then  %>
+                <%= "" %>
+                <% elseif type(v)=='table' then %>
+                <%= require('json').encode(v) %>
+                  <% elseif field:match('^date_') then %>
+                  <%= require('os').date('%c', v) %>
+                  <% elseif field=='avatar_url' then %>
+                  <img src="<%=v%>"/>
+                <% else %>
+                <%= tostring(v) %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+    </table>

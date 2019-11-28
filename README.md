@@ -1,13 +1,13 @@
 
 
-#Для установки
+# Для установки
 см. INSTALL.md
 
 # Для развёртывания
 * Написана консольная утилита tusker.lua
 * Для подключения SSL положить server.crt, server.csr, server.key, server.key.secure в папки ./security, ./security-dev
 
-## tusker.lua
+## ./tusker.lua
 * ./tusker tnt start - запуск сервера Tarantool на снэпшоте базы проекта.
 * ./tusker tnt stop - останов сервера Tarantool
 * ./tusker tnt drop - уничтожение снэпшота базы
@@ -23,5 +23,5 @@
 * ./tusker migration down - откатиться к предыдущей миграции. Данные могут быть потеряны.
 * ./tusker migration clean - стереть все созданные скрипты миграций.
 
-
-
+## ./src/reserver.lua
+В основе сервера лежит https://github.com/tarantool/http - внутрь просто были помещено немного кода, позволяющего загружать файлы.
